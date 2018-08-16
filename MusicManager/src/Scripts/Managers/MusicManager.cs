@@ -82,10 +82,8 @@ namespace MusicManager
                         file.Metadata.Album = GetStringFromCursor(cursor, projection[5], "Unknown Album");
                         file.Metadata.DisplayTitle = DeleteFileMask(displayTitle);
                         file.Metadata.Duration = cursor.GetInt(cursor.GetColumnIndex(projection[7]));
-                        file.Metadata.Year = cursor.GetInt(cursor.GetColumnIndex(projection[8]));
                         file.Metadata.AlbumID = albumId;
                         file.Metadata.AlbumArtUri = GetAlbumArtFromCursor(cursor, albumId, placeholderArtPath);
-                        file.MetadataExtracted = true;
 
                         AllMusics.Add(displayTitle, file);
                     }

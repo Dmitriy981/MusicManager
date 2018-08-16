@@ -38,6 +38,9 @@
     <LangVersion>7</LangVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -53,6 +56,9 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <CodeAnalysisRuleSet />
     <LangVersion>7.2</LangVersion>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -76,22 +82,22 @@
     <Compile Include="src\Scripts\MediaElements\MediaFile.cs" />
     <Compile Include="src\Scripts\MediaElements\MediaFileMeta.cs" />
     <Compile Include="src\Scripts\MediaElements\PlaylistItem.cs" />
-    <Compile Include="src\Scripts\UI\AddNewElementPopup.cs" />
-    <Compile Include="src\Scripts\UI\CustomFragment.cs" />
-    <Compile Include="src\Scripts\UI\EditPopup.cs" />
-    <Compile Include="src\Scripts\UI\InfoPopup.cs" />
+    <Compile Include="src\Scripts\UI\Popups\AddNewElementPopup.cs" />
+    <Compile Include="src\Scripts\UI\CustomElements\CustomFragment.cs" />
+    <Compile Include="src\Scripts\UI\Popups\EditPopup.cs" />
+    <Compile Include="src\Scripts\UI\Popups\InfoPopup.cs" />
     <Compile Include="src\Scripts\UI\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\Scripts\UI\PlayerFragment.cs" />
-    <Compile Include="src\Scripts\UI\PlaylistFragment.cs" />
-    <Compile Include="src\Scripts\UI\PlaylistItemFragment.cs" />
-    <Compile Include="src\Scripts\UI\ScreenFragment.cs" />
-    <Compile Include="src\Scripts\UI\SettingsCategoriesRootFragment.cs" />
-    <Compile Include="src\Scripts\UI\SettingsCategoryFragment.cs" />
-    <Compile Include="src\Scripts\UI\SettingsFragment.cs" />
-    <Compile Include="src\Scripts\UI\SettingsTagFragment.cs" />
-    <Compile Include="src\Scripts\UI\SettingsTagsRootFragment.cs" />
+    <Compile Include="src\Scripts\UI\Player\PlayerFragment.cs" />
+    <Compile Include="src\Scripts\UI\Playlist\PlaylistFragment.cs" />
+    <Compile Include="src\Scripts\UI\Playlist\PlaylistItemFragment.cs" />
+    <Compile Include="src\Scripts\UI\CustomElements\ScreenFragment.cs" />
+    <Compile Include="src\Scripts\UI\Settings\SettingsCategoriesRootFragment.cs" />
+    <Compile Include="src\Scripts\UI\Settings\SettingsCategoryFragment.cs" />
+    <Compile Include="src\Scripts\UI\Settings\SettingsFragment.cs" />
+    <Compile Include="src\Scripts\UI\Settings\SettingsTagFragment.cs" />
+    <Compile Include="src\Scripts\UI\Settings\SettingsTagsRootFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -238,6 +244,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icons8_slider_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\settings_top_bar.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

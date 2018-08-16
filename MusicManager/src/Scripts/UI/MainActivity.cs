@@ -33,19 +33,18 @@ namespace MusicManager
         Android.App.Fragment _playlistFragment;
         Android.App.Fragment _playerFragment;
         Android.App.Fragment _settingsFragment;
+        ScreenType currentScreenType = ScreenType.None;
 
         bool _isInitialized = false;
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
-            ScreenType currentType = ScreenType.None;
             List<Android.App.Fragment> addFragments = new List<Android.App.Fragment>();
-            //Window.RequestFeature(Window.FEAture)
             
             switch (item.ItemId)
             {
                 case Resource.Id.navigation_playlist:
-                    currentType = ScreenType.Playlist;
+                    currentScreenType = ScreenType.Playlist;
                     SetActionBarVisibility(true);
                     if (_playlistFragment == null)
                     {
@@ -54,7 +53,7 @@ namespace MusicManager
                     }
                     break;
                 case Resource.Id.navigation_player:
-                    currentType = ScreenType.Player;
+                    currentScreenType = ScreenType.Player;
                     SetActionBarVisibility(false);
                     if (_playerFragment == null)
                     {
@@ -63,7 +62,7 @@ namespace MusicManager
                     }
                     break;
                 case Resource.Id.navigation_settings:
-                    currentType = ScreenType.Settings;
+                    currentScreenType = ScreenType.Settings;
                     SetActionBarVisibility(true);
                     if (_settingsFragment == null)
                     {
@@ -85,17 +84,16 @@ namespace MusicManager
                 }
             }
 
-            OnScreenChanged?.Invoke(currentType);
+            OnScreenChanged?.Invoke(currentScreenType);
 
             return true;
         }
 
         #region Lifecycle
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             SetContentView(Resource.Layout.activity_main);
-
             ActivityCompat.RequestPermissions(this,
                new string[] {
                        Manifest.Permission.ReadExternalStorage,
@@ -116,10 +114,17 @@ namespace MusicManager
             GUIManager.Instance.CurrentActivity = this;
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.playlist_top_bar, menu);
-            return true;
+            menu.Clear();
+            
+            switch (currentScreenType)
+            {
+                case ScreenType.Playlist: MenuInflater.Inflate(Resource.Menu.playlist_top_bar, menu); break;
+                case ScreenType.Settings: MenuInflater.Inflate(Resource.Menu.settings_top_bar, menu); break;
+            }
+
+            return base.OnPrepareOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -127,15 +132,12 @@ namespace MusicManager
             switch (item.ItemId)
             {
                 case Resource.Id.action_search:
-                    DebugManager.Log("serach");
                     break;
 
                 case Resource.Id.action_play:
-                    DebugManager.Log("play");
                     break;
 
                 case Resource.Id.action_filter:
-                    DebugManager.Log("filter");
                     break;
             }
 
@@ -192,11 +194,12 @@ namespace MusicManager
 
         void SetActionBarVisibility(bool isVisible)
         {
-            //Window.RequestFeature(WindowFeatures.ActionBar);
-            if (ActionBar != null)
+            InvalidateOptionsMenu();
+            if (SupportActionBar != null)
             {
-                if (isVisible) ActionBar.Show();
-                else ActionBar.Hide();
+                SupportActionBar.SetShowHideAnimationEnabled(false);
+                if (isVisible) SupportActionBar.Show();
+                else SupportActionBar.Hide();
             }
         }
 

@@ -26,7 +26,7 @@
         android:layout_width="200px"
         android:layout_height="200px">
         <Button
-            android:background="@drawable/play"
+            android:background="@drawable/icons8_pencil_96"
             android:id="@+id/playlist_edit_item_button"
             android:layout_width="130px"
             android:layout_height="130px"

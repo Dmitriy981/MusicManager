@@ -28,7 +28,14 @@
             android:background="@drawable/circle_background"
             android:layout_marginRight="5dp" />
     </LinearLayout>
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_music_fragment_categories_root" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_music_fragment_tags_root" />
 </LinearLayout>

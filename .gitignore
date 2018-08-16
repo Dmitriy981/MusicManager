@@ -1,0 +1,7 @@
+**/.vs
+**/.vscode
+**/MusicManager/bin
+**/MusicManager/obj
+
+
+*.apk

@@ -25,6 +25,7 @@ namespace MusicManager
     {
         public static event Action<MediaFile> OnMusicChanged;
         public static event Action<int> OnPlayerUpdate;
+        public static event Action<bool> OnMusicPlayingStateChange; //isPlaying
 
         MediaPlayer player;
         MediaFile currentFile;
@@ -95,6 +96,8 @@ namespace MusicManager
         {
             if (Player.IsPlaying) Player.Pause();
             else Player.Start();
+
+            OnMusicPlayingStateChange?.Invoke(Player.IsPlaying);
         }
 
         public void PlayMusic(MediaFile file)
@@ -108,6 +111,7 @@ namespace MusicManager
             Player.Start();
 
             OnMusicChanged?.Invoke(file);
+            OnMusicPlayingStateChange?.Invoke(true);
 
             Player.Completion += Player_Completion;
         }
