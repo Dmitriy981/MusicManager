@@ -1,41 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_edit_music_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_width="250dp"
-    android:layout_height="375dp"
-    android:layout_gravity="center">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center">
-        <TextView
-            android:id="@+id/edit_popup_title"
-            android:layout_width="180dp"
+    android:gravity="center_horizontal">
+    <ScrollView
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="12dp"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:text="123"
-            android:layout_marginLeft="35dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless" />
-        <TextView
-            android:id="@+id/close_edit_music_popup"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:text="X"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/circle_background"
-            android:layout_marginRight="5dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_music_fragment_categories_root" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_music_fragment_tags_root" />
-</LinearLayout>
+            android:gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/edit_popup_title"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="123"
+                    android:layout_marginLeft="35dp" />
+                <TextView
+                    android:id="@+id/close_edit_music_popup"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:text="X"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/circle_background"
+                    android:layout_marginRight="5dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center">
+                    <Spinner
+                        android:id="@+id/categories_spinner"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Add category" />
+                    <Button
+                        android:id="@+id/music_add_category"
+                        android:layout_width="40dip"
+                        android:layout_height="match_parent"
+                        android:text="+" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/edit_music_fragment_categories_root"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center">
+                    <Spinner
+                        android:id="@+id/tags_spinner"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Add category" />
+                    <Button
+                        android:id="@+id/music_add_tag"
+                        android:layout_width="40dip"
+                        android:layout_height="match_parent"
+                        android:text="+" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/edit_music_fragment_tags_root"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

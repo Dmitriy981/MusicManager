@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MusicManager
 {
-    public class CustomFragment : Fragment
+    public class CustomDialogFragment : DialogFragment
     {
         protected View _currentView;
         protected Action _createCallback;

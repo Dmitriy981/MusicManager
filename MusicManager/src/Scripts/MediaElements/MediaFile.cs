@@ -49,25 +49,33 @@ namespace MusicManager
 
         public void AddCategory(string name)
         {
-            if (!_categories.ContainsKey(name))
+            if (!Categories.ContainsKey(name))
             {
-                _categories.Add(name, 0);
+                Categories.Add(name, 0);
             }
         }
 
         public void ChangeCategory(string name, int value)
         {
-            if (_categories.ContainsKey(name))
+            if (Categories.ContainsKey(name))
             {
-                _categories[name] = value;
+                Categories[name] = value;
             }
         }
         
         public void AddTag(string name)
         {
-            if (!_tags.Contains(name))
+            if (!Tags.Contains(name))
             {
-                _tags.Add(name);
+                Tags.Add(name);
+            }
+        }
+
+        public void DeleteTag(string name)
+        {
+            if (Tags.Contains(name))
+            {
+                Tags.Remove(name);
             }
         }
 

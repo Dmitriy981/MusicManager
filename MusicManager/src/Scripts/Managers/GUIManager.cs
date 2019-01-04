@@ -17,5 +17,17 @@ namespace MusicManager
         public BottomNavigationView NavigationView { get; set; }
 
         public Activity CurrentActivity { get; set; }
+
+        public static ArrayAdapter<string> ArrayAdapterForList(List<string> list, string hint)
+        {
+            list.Insert(0, hint);
+
+            ArrayAdapterWithHint result = new ArrayAdapterWithHint(Instance.CurrentActivity.ApplicationContext,
+                Resource.Layout.support_simple_spinner_dropdown_item,
+                list);
+            result.SetDropDownViewResource(Resource.Layout.support_simple_spinner_dropdown_item);
+
+            return result;
+        }
     }
 }

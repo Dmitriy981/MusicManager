@@ -49,8 +49,10 @@ namespace MusicManager
             }
         }
 
+        public FragmentManager FragmentManager { get; set; }
         public void CreatePlaylist(FragmentManager fragmentManager)
         {
+            FragmentManager = fragmentManager;
             FragmentTransaction fragmentTx = fragmentManager.BeginTransaction();
 
             foreach (KeyValuePair<string, PlaylistItem> pair in AllMusicItems)

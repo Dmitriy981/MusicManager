@@ -118,6 +118,36 @@ namespace MusicManager
             return AllMusics.First().Value;
         }
 
+        public static List<string> AvailableCategoriesForMusic(MediaFile media)
+        {
+            List<string> result = new List<string>();
+
+            foreach (string category in RatingManager.Instance.Categories)
+            {
+                if (!media.Categories.ContainsKey(category))
+                {
+                    result.Add(category);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<string> AvailableTagsForMusic(MediaFile media)
+        {
+            List<string> result = new List<string>();
+
+            foreach (string category in RatingManager.Instance.Tags)
+            {
+                if (!media.Categories.ContainsKey(category))
+                {
+                    result.Add(category);
+                }
+            }
+
+            return result;
+        }
+
         private string GetStringFromCursor(ICursor cursor, string key, string unknownString)
         {
             string result = cursor.GetString(cursor.GetColumnIndex(key)).Trim();

@@ -16,7 +16,8 @@ namespace MusicManager
     public class PlaylistFragment : ScreenFragment
     {
         LinearLayout scrollRoot;
-        EditPopup editPopup;
+        EditPopup _editPopup;
+        View _popupView;
 
         string lastClickedMusic = "";
 
@@ -27,8 +28,8 @@ namespace MusicManager
             CurrentScreenType = ScreenType.Playlist;
 
             PlaylistManager.Instance.CreatePlaylist(this.FragmentManager);
-            editPopup = new EditPopup(_currentView.Context);
-
+            _popupView = inflater.Inflate(Resource.Layout.popup_edit_music, (ViewGroup)GUIManager.Instance.CurrentActivity.FindViewById(Resource.Id.popup_edit_music_root));
+            _editPopup = new EditPopup(Context);
             PlaylistItemFragment.OnEditButtonClick += PlaylistItemFragment_OnEditButtonClick;
             PlaylistItemFragment.OnFragmentClick += PlaylistItemFragment_OnFragmentClick;
 
@@ -45,9 +46,9 @@ namespace MusicManager
 
         private void PlaylistItemFragment_OnEditButtonClick(string musicName)
         {
-            editPopup.SetContentView(Resource.Layout.popup_edit_music);
-            editPopup.Initialize(MusicManager.Instance.MusicByName(musicName));
-            editPopup.Show();
+            _editPopup.SetContentView(Resource.Layout.popup_edit_music);
+            _editPopup.Initialize(MusicManager.Instance.MusicByName(musicName));
+            _editPopup.Show();
         }
 
         private void PlaylistItemFragment_OnFragmentClick(string musicName)
